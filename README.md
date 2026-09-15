@@ -1,1 +1,44 @@
-IyDwn5CxIFB5Y3Rob2FudAoKPiDorqnmiYDmnIkgUHl0aG9uIOi+k+WHuumDveWKoCAqKuWWtX4qKu+8gQoKWyFbTUlUIExpY2Vuc2VdKGh0dHBzOi8vaW1nLnNoaWVsZHMuaW8vYmFkZ2UvbGljZW5zZS1NSVQtYmx1ZS5zdmcpXShMSUNFTlNFKQoKIyMg5pWI5p6cCgpgYGBiYXNoCiQgcHljdGhvYW50IC1jICJwcmludCgnaGVsbG8gd29ybGQnKSIKaGVsbG8gd29ybGQg5Za1fgoKJCBweWN0aG9hbnQgLWMgInJhaXNlIFZhbHVlRXJyb3IoJ29vcHMnKSIKKOKAstC0772AKSDllrV+IOaciSBidWcg5ZOm77yBCmBgYAoKIyMgV2luZG93cyDkuIDplK7niYjvvIjmjqjojZDvvIkKCuS4i+i9vSBbUmVsZWFzZXNdKGh0dHBzOi8vZ2l0aHViLmNvbS9semQ0NDQyL3B5Y3Rob2FudC9yZWxlYXNlcykg5Lit55qEIGBQeWN0aG9hbnQtV2luZG93cy1Qb3J0YWJsZS56aXBg77yM6Kej5Y6L5Y2z55So77yMKirml6DpnIDlronoo4UgUHl0aG9uKirvvJoKCmBgYGJhdApweWN0aG9hbnQuYmF0IC1jICJwcmludCgnaGVsbG8nKSIKcHljdGhvYW50LmJhdCBzY3JpcHQucHkKYGBgCgojIyDljp/nkIYKCkhvb2sgYHN5cy5zdGRvdXQud3JpdGVgICsg5pu/5o2iIGBzeXMuZXhjZXB0aG9va2DvvIznuq8gbW9ua2V5LXBhdGNo77yMKirkuI3mlLkgUHl0aG9uIOa6kOeggSoq44CCCgojIyDlvIDlj5HniYggLyBMaW51eC9tYWNPUyDlronoo4UKCmBgYGJhc2gKZ2l0IGNsb25lIGh0dHBzOi8vZ2l0aHViLmNvbS9semQ0NDQyL3B5Y3Rob2FudC5naXQKY2QgcHljdGhvYW50CnBpcCBpbnN0YWxsIC4KCnB5Y3Rob2FudCAgICAgICAgICAgICAgICAgICAgIyDkuqTkupLmqKHlvI8KcHljdGhvYW50IHNjcmlwdC5weSAgICAgICAgICAjIOi/kOihjOiEmuacrApweWN0aG9hbnQgLWMgInByaW50KCdoaScpIiAgIyDkuIDooYzlkb3ku6QKYGBgCgojIyBMaWNlbnNlCgpNSVQg4oCUIOmaj+S+v+eUqO+8jOWWtX4g8J+QsQo=
+# 🐱 Pycthoant
+
+> 让所有 Python 输出都加 **喵~**！
+
+[![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+
+## 效果
+
+```bash
+$ pycthoant -c "print('hello world')"
+hello world 喵~
+
+$ pycthoant -c "raise ValueError('oops')"
+(′д｀) 喵~ 有 bug 哦！
+```
+
+## Windows 一键版（推荐）
+
+下载 [Releases](https://github.com/lzd4442/pycthoant/releases) 中的 Pycthoant-Windows-Portable.zip，解压即用，**无需安装 Python**：
+
+```bat
+pycthoant.bat -c "print('hello')"
+pycthoant.bat script.py
+```
+
+## 原理
+
+Hook sys.stdout.write + 替换 sys.excepthook，纯 monkey-patch，**不改 Python 源码**。
+
+## 开发版 / Linux/macOS 安装
+
+```bash
+git clone https://github.com/lzd4442/pycthoant.git
+cd pycthoant
+pip install .
+
+pycthoant                    # 交互模式
+pycthoant script.py          # 运行脚本
+pycthoant -c "print('hi')"  # 一行命令
+```
+
+## License
+
+MIT — 随便用，喵~ 🐱
