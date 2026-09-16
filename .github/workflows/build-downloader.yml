@@ -6,6 +6,9 @@ on:
       - "v*.*.*"
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   build:
     runs-on: windows-latest
@@ -24,10 +27,20 @@ jobs:
       - name: Build EXE
         run: pyinstaller --onefile --name Pycthoant-Downloader downloader/downloader.py
 
-      - name: Create Release
-        uses: softprops/action-gh-release@v2
-        with:
-          files: dist/Pycthoant-Downloader.exe
-          generate_release_notes: true
+      - name: Upload to Release
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TAG_NAME: ${{ github.ref_name }}
+        run: |
+          echo "Tag: $TAG_NAME"
+
+          # Find or create release for this tag
+          RELEASE_ID=$(gh release view "$TAG_NAME" --json id --jq .id 2>/dev/null || echo "")
+
+          if [ -z "$RELEASE_ID" ]; then
+            echo "Creating release..."
+            gh release create "$TAG_NAME" --title "Pycthoant Downloader $TAG_NAME" --notes "Pycthoant 下载器 Windows 可执行文件"
+          fi
+
+          # Upload exe
+          gh release upload "$TAG_NAME" dist/Pycthoant-Downloader.exe --clobber
