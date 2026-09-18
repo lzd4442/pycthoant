@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pycthoant"
+version = "1.0.0"
+description = "🐱 让所有 Python 输出都加 喵~！"
+readme = "README.md"
+license = {text = "MIT"}
+requires-python = ">=3.8"
+classifiers = [
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+]
+keywords = ["fun", "cat", "meow", "output", "hook"]
+
+[project.scripts]
+pycthoant = "pycthoant.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/lzd4442/pycthoant"
+
+[tool.setuptools.packages.find]
+where = ["src"]
