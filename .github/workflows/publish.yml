@@ -1,0 +1,26 @@
+name: Publish to PyPI
+
+on:
+  workflow_dispatch:
+    inputs:
+      token:
+        description: 'PyPI token (base64 encoded)'
+        required: true
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Build
+        run: pip install build && python -m build
+      - name: Upload to PyPI
+        run: |
+          TOKEN=$(echo "${{ github.event.inputs.token }}" | base64 -d | tr -d ' ')
+          echo "Token length: ${#TOKEN}"
+          twine upload dist/* --username __token__ --password "$TOKEN"
+        env:
+          TWINE_PASSWORD: ${{ github.event.inputs.token }}
