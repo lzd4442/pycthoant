@@ -19,8 +19,6 @@ jobs:
         run: pip install build && python -m build
       - name: Upload to PyPI
         run: |
+          pip install twine
           TOKEN=$(echo "${{ github.event.inputs.token }}" | base64 -d | tr -d ' ')
-          echo "Token length: ${#TOKEN}"
           twine upload dist/* --username __token__ --password "$TOKEN"
-        env:
-          TWINE_PASSWORD: ${{ github.event.inputs.token }}
